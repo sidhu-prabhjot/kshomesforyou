@@ -31,3 +31,247 @@ body {
   height: 0;
   visibility: hidden;
 }
+
+/*-------------------------------------------------------*/
+/*REUSABLE COMPONENTS*/
+/*-------------------------------------------------------*/
+/*since the content will be in rows, the rows are defined*/
+.row {
+  /*since we are using the responsive design, this will be the only value in pixels*/
+  max-width: 1140px;
+  /*center the rows: vertical horizontal*/
+  margin: 0 auto;
+}
+
+/*designing the sections of the webpage*/
+section {
+  /*pading vertical is 80 pixels, and padding horizontal is 0 pixels*/
+  padding: 80px 0;
+}
+
+/*designing the box which holds the information paragraphs and their correpsonding headers*/
+.box {
+  padding: 1%;
+}
+
+/*----------HEADINGS----------*/
+
+/*these are the properties that the different headers have in commons*/
+h1,
+h2,
+h3 {
+  /*change the font weight from the default one we defined at the beginning of this file. Since the header is already has excess weight, 300 will make it much thinner*/
+  font-weight: 300;
+  /*make the text all capitals*/
+  text-transform: uppercase;
+}
+
+/*these are the design properties that are unique to each individual header type*/
+h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  /*set the color of the text*/
+  color: #fff;
+  /*this means the text will be 200 percent larger than the default text size which was defined in the html tag in this css file (the second tag in this file)*/
+  font-size: 240%;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+}
+
+h2 {
+  /*180% the size of the default size we defined in the basic setup section of this css file*/
+  font-size: 180%;
+  word-spacing: 2px;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-size: 110%;
+  margin-bottom: 15px;
+}
+
+/*----------PARAGRAPHS----------*/
+
+/*designing the subtitle to the section header*/
+.long-copy {
+  line-height: 145%;
+  width: 70%;
+  /*we use 15% because 70% of the width is taken by the content, so 15% from both the left and right make 30% and 70% + 30% = 100%*/
+  margin-left: 15%;
+}
+
+/*designing all the paragraphs that are within the div with the box class*/
+.box p {
+  font-size: 90%;
+  line-height: 145%;
+}
+
+/*----------LINKS----------*/
+
+a:link,
+a:visited {
+  color: #e67e22;
+  text-decoration: none;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #e67e22;
+}
+
+a:hover,
+a:active {
+  color: #555;
+  border-bottom: 1px solid transparent;
+  -webkit-transition: border-bottom 0.2s, color 0.2s;
+  transition: border-bottom 0.2s, color 0.2s;
+}
+
+/*----------BUTTONS----------*/
+
+/*design for a button in general*/
+/*the colon followed by the word link, and visited makes sure that the text of the link remains the same even after it has been clicked, and normally*/
+.btn:link,
+.btn:visited,
+input[type="submit"] {
+  /*makes elements in the same row*/
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: 300;
+  /*remove the auto underline that comes with links*/
+  text-decoration: none;
+  /*making the button round*/
+  border-radius: 200px;
+  color: #fff;
+  /*to add a transition, a transition property is added. This is for changin between states of the button*/
+  /*when changing from regular to hovered state, the button background, border and text color will change over a period of 0.2 seconds instead of instantaneously*/
+  -webkit-transition: background-color 0.2s, border 0.2s, color 0.2s;
+  transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+/*designing specifically the full button*/
+.btn-full:link,
+.btn-full:visited,
+input[type="submit"] {
+  background-color: #e67e22;
+  /*same border as the ghost button was added so the sizes of the two buttons would be the same*/
+  border: 1px solid #e67e22;
+  /*margin to seperate the buttons*/
+  margin-right: 15px;
+}
+
+/*designing specifically the ghost button*/
+.btn-ghost:link,
+.btn-ghost:visited {
+  /*changing the border color: border thickness, style, color*/
+  border: 1px solid #e67e22;
+  color: #e67e22;
+}
+
+/*for specifying what will happen when the mouse is hovered over the button*/
+.btn:hover,
+.btn:active,
+input[type="submit"]:hover,
+input[type="submit"]:active {
+  background-color: #cf6d17;
+  color: #fff;
+}
+
+/*designing specifically the full button when it is being hovered over or activated*/
+.btn-full:link,
+.btn-full:visited {
+  /*change the color of the border to match the background color*/
+  border: 1px solid #cf6d17;
+}
+
+/*-------------------------------------------------------*/
+/*HEADER*/
+/*-------------------------------------------------------*/
+
+/*header styling*/
+header {
+  /*for setting the background image. The linear gradient is used to overlay some color or gradient on another image.
+    The rgba has opacity which is needed to see the image underneath*/
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.7)),
+      to(rgba(0, 0, 0, 0.7))
+    ),
+    url(img/hero.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(img/hero.jpg);
+  /*defining how much of the image we want to see*/
+  background-size: cover;
+  /*for positioning the background*/
+  background-position: center;
+  /*this notation means that the height is 100 percent of the view port*/
+  height: 100vh;
+  /*makes the images stay in the same place relative to the webpage when scrolling*/
+  background-attachment: fixed;
+}
+
+/*for styling the hero text box*/
+.hero-text-box {
+  /*will not use responsive grid because we want this to be an absolutely position element*/
+  position: absolute;
+  width: 1140px;
+  /*50 percent away from the top*/
+  top: 50%;
+  /*50 percent away from the left*/
+  left: 50%;
+  /*translate half of the elements width up, and to the left*/
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/*****************MAIN NAVIGATION********************/
+
+/*designing the logo class for the header*/
+.logo {
+  height: 100px;
+  width: auto;
+  /*float property moves an element to a certain side of the view*/
+  float: left;
+  margin: 15px 0;
+}
+
+/*Main Navigation*/
+/*design for the main navigation*/
+.main-nav {
+  float: right;
+  /*get rid of the auto bullet points in the unordered list*/
+  list-style: none;
+  margin-top: 55px;
+}
+
+/*desgin: list elements in the main navigation*/
+.main-nav li {
+  /*for making each element side-by-side*/
+  display: inline-block;
+  /*spacing out the elements*/
+  margin-left: 40px;
+}
+
+/*design: links inside the list elements of the unordered list*/
+/*both the link, and the visited link will have the same design*/
+.main-nav li a:link,
+.main-nav li a:visited {
+  /*padding vertical is 8px and padding horizontal is 0px*/
+  padding: 8px 0;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  /*font size is 90% of the default one we defined in basic setup*/
+  font-size: 90%;
+  /*th border bottom is predefined for transition purposes*/
+  border-bottom: 2px solid transparent;
+  -webkit-transition: border 0.2s;
+  transition: border 0.2s;
+}
+
+/*design: links inside the list elements of the undordered list when they are being hovered over, or activated*/
+.main-nav li a:hover,
+.main-nav li a:active {
+  border-bottom: 2px solid #e67e22;
+}
