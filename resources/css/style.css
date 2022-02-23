@@ -1,3 +1,14 @@
+/*
+COLOR PALLETE
+
+BASE: #191A19
+
+MAIN: #4E9F3D
+
+ACCENT: #D8E9A8
+
+*/
+
 /*basic viewpage styling*/
 * {
   margin: 0;
@@ -112,18 +123,18 @@ h3 {
 
 a:link,
 a:visited {
-  color: #e67e22;
+  color: #4e9f3d;
   text-decoration: none;
   padding-bottom: 1px;
-  border-bottom: 1px solid #e67e22;
+  border-bottom: 1px solid #4e9f3d;
 }
 
 a:hover,
 a:active {
   color: #555;
   border-bottom: 1px solid transparent;
-  -webkit-transition: border-bottom 0.2s, color 0.2s;
-  transition: border-bottom 0.2s, color 0.2s;
+  -webkit-transition: border 0.2s, color 0.2s;
+  transition: border 0.2s, color 0.2s;
 }
 
 /*----------BUTTONS----------*/
@@ -152,9 +163,9 @@ input[type="submit"] {
 .btn-full:link,
 .btn-full:visited,
 input[type="submit"] {
-  background-color: #e67e22;
+  background-color: #4e9f3d;
   /*same border as the ghost button was added so the sizes of the two buttons would be the same*/
-  border: 1px solid #e67e22;
+  border: 1px solid #4e9f3d;
   /*margin to seperate the buttons*/
   margin-right: 15px;
 }
@@ -163,8 +174,8 @@ input[type="submit"] {
 .btn-ghost:link,
 .btn-ghost:visited {
   /*changing the border color: border thickness, style, color*/
-  border: 1px solid #e67e22;
-  color: #e67e22;
+  border: 1px solid #4e9f3d;
+  color: #4e9f3d;
 }
 
 /*for specifying what will happen when the mouse is hovered over the button*/
@@ -172,7 +183,7 @@ input[type="submit"] {
 .btn:active,
 input[type="submit"]:hover,
 input[type="submit"]:active {
-  background-color: #cf6d17;
+  background-color: #4e9f3d;
   color: #fff;
 }
 
@@ -180,7 +191,7 @@ input[type="submit"]:active {
 .btn-full:link,
 .btn-full:visited {
   /*change the color of the border to match the background color*/
-  border: 1px solid #cf6d17;
+  border: 1px solid #4e9f3d;
 }
 
 /*-------------------------------------------------------*/
@@ -198,9 +209,9 @@ header {
       from(rgba(0, 0, 0, 0.7)),
       to(rgba(0, 0, 0, 0.7))
     ),
-    url(img/hero.jpg);
+    url(../img/splash.jpg);
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(img/hero.jpg);
+    url(../img/splash.jpg);
   /*defining how much of the image we want to see*/
   background-size: cover;
   /*for positioning the background*/
@@ -273,5 +284,135 @@ header {
 /*design: links inside the list elements of the undordered list when they are being hovered over, or activated*/
 .main-nav li a:hover,
 .main-nav li a:active {
-  border-bottom: 2px solid #e67e22;
+  border-bottom: 2px solid #4e9f3d;
+}
+
+/* NEW LISTINGS SLIDER */
+
+.slider {
+  max-width: 100rem;
+  height: 32rem;
+  margin: 0 auto;
+  position: relative;
+
+  /* IN THE END */
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 32rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* THIS creates the animation! */
+  transition: transform 1s;
+}
+
+/*slide one and hover transformation*/
+.slide_one .slide_content {
+  background-image: url(../img/house1.jpg);
+  width: 600px;
+  height: 400px;
+}
+
+.slide_one .slide_content:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("../img/house1.jpg");
+}
+
+/*slide two and hover transformation*/
+.slide_two .slide_content {
+  background-image: url(../img/house2.jpg);
+  width: 600px;
+  height: 400px;
+}
+
+.slide_two .slide_content:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("../img/house2.jpg");
+}
+
+/*slide three and hover transformation*/
+.slide_three .slide_content {
+  background-image: url(../img/house3.jpg);
+  width: 600px;
+  height: 400px;
+}
+
+.slide_three .slide_content:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("../img/house3.jpg");
+}
+
+.slide_content {
+  background-size: contain;
+  background-position: center;
+  overflow: hidden;
+  border-radius: 2.5%;
+  box-shadow: 10px 10px 10px rgba(51, 51, 51, 0.685);
+  transition: box-shadow 0.5s;
+}
+
+.slide_content:hover {
+  box-shadow: 15px 15px 15px rgba(51, 51, 51, 0.466);
+}
+
+.slide_content:hover .slide_info {
+  opacity: 1;
+}
+
+.slide_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.slide_info p {
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.slider__btn {
+  position: absolute;
+  z-index: 10;
+
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+  color: #333;
+  border-radius: 50%;
+  height: 5.5rem;
+  width: 5.5rem;
+  font-size: 3.25rem;
+  cursor: pointer;
+}
+
+.slider__btn--left {
+  left: 6%;
+  transform: translate(-50%, -100%);
+}
+
+.slider__btn--right {
+  right: 6%;
+  transform: translate(50%, -100%);
+}
+
+.dots__dot:last-child {
+  margin: 0;
+}
+
+.dots__dot--active {
+  /* background-color: #fff; */
+  background-color: #888;
+  opacity: 1;
 }
