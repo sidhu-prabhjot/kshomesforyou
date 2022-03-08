@@ -95,6 +95,17 @@
       <button class="slider__btn slider__btn--right">&rarr;</button>
     </section>
 
+    <section class="section">
+      <h3>My Google Maps Demo</h3>
+      <!--The div element for the map -->
+      <div id="map"></div>
+    </section>
+
     <script src="resources/js/script.js"></script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDil896qamPPJY29LpXQk9VUW94K7ehzXw&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
   </body>
 </html>

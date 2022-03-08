@@ -36,3 +36,75 @@ btnSliderLeft.addEventListener("click", function (event) {
     });
   }
 });
+
+/*MAP FUNCTIONALITY*/
+
+//get latitude and longitude
+const getLatAndLong = async function () {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        resolve(position);
+      });
+    } else {
+      reject("Could not get geolocation");
+    }
+  });
+};
+
+//reverse geocode latitude, and longitude
+const reverseGeocode = async function (latitude, longitude) {
+  return new Promise(async (resolve, reject) => {
+    if (latitude && longitude) {
+      const response = await fetch(
+        `https://geocode.xyz/${latitude},${longitude}?geoit=json`
+      );
+      const data = response.json();
+      resolve(data);
+    } else {
+      reject("Did not receive valid latitude or longitude");
+    }
+  });
+};
+
+// Initialize and add the map
+function initMap(latitude, longitude) {
+  return new Promise(async (resolve, reject) => {
+    if (latitude && longitude) {
+      // The location of Uluru
+      const uluru = { lat: latitude, lng: longitude };
+      // The map, centered at Uluru
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: uluru,
+      });
+      // The marker, positioned at Uluru
+      const marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+      });
+
+      resolve(latitude, longitude);
+    } else {
+      reject("could not get latitude and longitude");
+    }
+  });
+}
+
+/*main executuion function*/
+const main = async function () {
+  //get positional data after awaiting promise
+  const positionalData = await getLatAndLong();
+
+  const { latitude, longitude } = positionalData.coords;
+
+  console.log(latitude, longitude);
+
+  const revGeoCodeData = await reverseGeocode(latitude, longitude);
+
+  console.log(revGeoCodeData);
+
+  await initMap(latitude, longitude);
+};
+
+main();
